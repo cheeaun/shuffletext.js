@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<title>shuffleText.js</title>
+<style>
+body{
+font-family: sans-serif;
+}
+.stexts a{
+float: left;
+width: 12em;
+text-align: center;
+display: block;
+padding: 10px;
+color: #8B8427;
+background-color: #FAF6BE;
+margin: 10px;
+text-decoration: none;
+font-weight: bold;
+}
+.stexts a:hover{
+text-transform: uppercase;
+color: #fff;
+background-color: #8B8427;
+}
+h2{
+clear: both;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.1/mootools-yui-compressed.js"></script>
+<script src="shuffleText.js"></script>
+<script type="text/javascript">
+<!--
+window.addEvent('domready', function(){
+	var shuffle = new shuffleText('stext', { duration: 3000 });
+	shuffle.start();
+	
+	var status = $('status');
+	var shufflebutton = new shuffleText('sbutton', {
+		duration: 2000,
+		onStart: function(){
+			status.set('text', 'shuffling started');
+		},
+		onComplete: function(){
+			status.set('text', 'shuffling completed');
+		}
+	});
+	
+	$('sbutton').addEvent('mouseenter', function(){
+		shufflebutton.start();
+	});
+
+	$$('a').each(function(el){
+		var shuffle = new shuffleText(el);
+		el.addEvent('mouseenter', function(){
+			shuffle.start();
+		});
+	});
+});
+-->
+</script>
+<h1 id="stext">shuffleText.js</h1>
+<a href="#">shuffle this link!</a>
+<button id="sbutton">even on a button?</button>
+<span id="status"></span>
+<div class="stexts">
+<a href="#">this is cool</a>
+<a href="#">this is shuffle</a>
+<a href="#">this is text</a>
+</div>
+<h2>The code</h2>
+<pre><code>window.addEvent('load', function(){
+	var shuffle = new shuffleText('stext', { duration: 3000 });
+	shuffle.start();
+	
+	var shufflebutton = new shuffleText('sbutton', {
+		duration: 2000,
+		onStart: function(){
+			$('status').set('text','shuffling started');
+		},
+		onComplete: function(){
+			$('status').set('text','shuffling completed');
+		}
+	});
+	$('sbutton').addEvent('mouseenter', function(){
+		shufflebutton.start();
+	});
+
+	$$('a').each(function(el){
+		var shuffle = new shuffleText(el);
+		el.addEvent('mouseenter', function(){
+			shuffle.start();
+		});
+	});
+});</code></pre>
+<h2>The script</h2>
+<p><a href="shuffleText.js">shuffleText.js</a> (2Kb) (requires <a href="http://ajax.googleapis.com/ajax/libs/mootools/1.2.1/mootools-yui-compressed.js">Mootools 1.2.1</a> with (minimum) Class.Extras, Selectors and Element.Event)</p>
+<h2>Changelog</h2>
+<ul>
+<li>0.3 (18.03.2009)
+	<ul>
+	<li>Updated for Mootools 1.2.1</li>
+	<li>MIT-licensed.</li>
+	<li>Moved to GitHub.</li>
+	</ul>
+</li>
+<li>0.2.1 (18.05.2008)
+	<ul>
+	<li>Fixed some mistakes in code.</li>
+	<li>Added examples on using <code>onStart</code> and <code>onComplete</code> events.</li>
+	</ul>
+</li>
+<li>0.2 (18.05.2008)
+	<ul>
+	<li>Added <code>onStart</code> and <code>onComplete</code> events.</li>
+	<li>Fixed bug which new object is created every time link is hovered.</li>
+	<li>Removed 'busy' class creation.</li>
+	<li>Removed <code>Element.shuffleText</code></li>
+	</ul>
+</li>
+<li>0.1 (17.05.2008)
+	<ul>
+	<li>Initial release.</li>
+	</ul>
+</li>
+</ul>
+<p>Coded by <a href="http://twitter.com/cheeaun">Chee Aun</a></p>
